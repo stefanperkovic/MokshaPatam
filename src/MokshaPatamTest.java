@@ -26,6 +26,7 @@ public class MokshaPatamTest {
     private int[][] ladders;
     private int[][] snakes;
 
+
     @Test
     @Timeout(value = 1, unit = TimeUnit.SECONDS)
     public void testBasic() {
