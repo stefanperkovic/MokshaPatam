@@ -28,6 +28,7 @@ public class MokshaPatam {
                 }
                 else if (snakes[current_num][i]){
                     current_num = snakes[][i];
+
                 }
 
 
