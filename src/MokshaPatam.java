@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -18,29 +19,34 @@ public class MokshaPatam {
 
         int current_num = 1;
         int end_num = boardsize;
-        int visited = {};
-        int previous_number[] = {};
-        Queue<Integer> queue = new PriorityQueue<>();
-        while (current_num != end_num){
-            for (int i = 0; i < ladders.length; i++)
-                if (ladders[current_num][i]){
-                    current_num = ladders[][i];
-                }
-                else if (snakes[current_num][i]){
-                    current_num = snakes[][i];
-
-                }
-
-
-            for (int i = 0; i < 6; i++){
-                queue.add(current_num + i);
-                visited += current_num + i;
-                previous_number[current_num + i] = current_num;
-
-
+        boolean visited[] = new boolean[boardsize];
+        Queue<Integer> queue = new LinkedList<Integer>();
+        queue.add(current_num);
+        int rolls = 0;
+        while (!queue.isEmpty()){
+            current_num = queue.remove();
+            if (current_num == end_num) {
+                return rolls;
             }
 
+            for (int i = 0; i < 6; i++){
+                int node = current_num + i;
 
+                if (!visited[node]){
+                    queue.add(node);
+                }
+
+
+                if (/** Node is in a snake or ladder*/){
+                    node = snakes[node];
+                }
+                if (/** Node is in a ladder*/){
+                    node = ladders[node];
+                }
+
+            }
+            rolls ++;
+            visited[current_num] = true;
 
         }
 
