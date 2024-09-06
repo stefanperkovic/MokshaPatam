@@ -23,10 +23,20 @@ public class MokshaPatam {
         Queue<Integer> queue = new LinkedList<Integer>();
         queue.add(current_num);
         int rolls = 0;
+        int snakes_ladders[] = new int[boardsize + 1];
+        int rolls[] = new int[boardsize + 1];
+
+        for (int i = 0; i < snakes.length; i++){
+            snakes_ladders[snakes[i][0]] = snakes[i][1];
+        }
+        for (int i = 0; i < ladders.length; i++){
+            snakes_ladders[ladders[i][0]] = ladders[i][1];
+        }
+
         while (!queue.isEmpty()){
             current_num = queue.remove();
             if (current_num == end_num) {
-                return rolls;
+                return rolls[]
             }
 
             for (int i = 0; i < 6; i++){
