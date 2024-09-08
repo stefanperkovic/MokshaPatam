@@ -8,7 +8,7 @@ import java.util.Queue;
  * for Adventures in Algorithms
  * at Menlo School in Atherton, CA
  *
- * Completed by: [YOUR NAME HERE]
+ * Completed by: Stefan Perkovic
  *
  */
 
@@ -18,13 +18,11 @@ public class MokshaPatam {
     public static int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
 
         int current_num = 1;
-        int end_num = boardsize;
-        boolean visited[] = new boolean[boardsize];
+        boolean[] visited = new boolean[boardsize + 1];
         Queue<Integer> queue = new LinkedList<Integer>();
         queue.add(current_num);
-        int rolls = 0;
-        int snakes_ladders[] = new int[boardsize + 1];
-        int rolls[] = new int[boardsize + 1];
+        int[] snakes_ladders = new int[boardsize + 1];
+        int[] rolls = new int[boardsize + 1];
 
         for (int i = 0; i < snakes.length; i++){
             snakes_ladders[snakes[i][0]] = snakes[i][1];
@@ -35,36 +33,26 @@ public class MokshaPatam {
 
         while (!queue.isEmpty()){
             current_num = queue.remove();
-            if (current_num == end_num) {
-                return rolls[]
+            if (current_num == boardsize) {
+                System.out.println(rolls[current_num]);
+                return rolls[current_num];
             }
-
-            for (int i = 0; i < 6; i++){
+            for (int i = 1; i <= 6; i++){
                 int node = current_num + i;
+                if (node <= boardsize){
+                    if (snakes_ladders[node] != 0){
+                        node = snakes_ladders[node];
+                    }
 
-                if (!visited[node]){
-                    queue.add(node);
+                    if (!visited[node]){
+                        visited[node] = true;
+                        rolls[node] = rolls[current_num] + 1;
+                        queue.add(node);
+                    }
                 }
-
-
-                if (/** Node is in a snake or ladder*/){
-                    node = snakes[node];
-                }
-                if (/** Node is in a ladder*/){
-                    node = ladders[node];
-                }
-
             }
-            rolls ++;
-            visited[current_num] = true;
-
         }
-
-
-
-
-
-
-        return 0;
+        System.out.println("-1");
+        return -1;
     }
 }
